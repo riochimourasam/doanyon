@@ -1,0 +1,34 @@
+const fs = require("fs");
+const path = require("path");
+
+// Fonction pour parcourir un dossier et nettoyer tous les fichiers
+function cleanDirectory(dirPath) {
+  fs.readdirSync(dirPath).forEach(file => {
+    const fullPath = path.join(dirPath, file);
+    const stat = fs.statSync(fullPath);
+
+    if (stat.isDirectory()) {
+      // Si c'est un dossier, on continue la recherche
+      cleanDirectory(fullPath);
+    } else {
+      // Nettoyer le fichier
+      cleanFile(fullPath);
+    }
+  });
+}
+
+// Fonction pour nettoyer un fichier
+function cleanFile(filePath) {
+  let content = fs.readFileSync(filePath, "utf8");
+  // Remplace les espaces insécables par des espaces normaux
+  content = content.replace(/\u00A0/g, " ");
+  // Supprime aussi d'autres caractères invisibles éventuels
+  content = content.replace(/[\u200B-\u200D\uFEFF]/g, "");
+  fs.writeFileSync(filePath, content, "utf8");
+  console.log(`✅ Nettoyé : ${filePath}`);
+}
+
+// Lancer le nettoyage sur le dossier courant
+cleanDirectory(__dirname);
+console.log("Hello Doanyon Africa 🚀");
+
