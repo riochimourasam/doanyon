@@ -14,6 +14,8 @@
     --accent-dark: #B8860B;
     --primary: #1e3c72;
     --primary-light: #2a5298;
+    --blue: #5B9BD5;
+    --orange: #FF8C42;
     
     --transition-smooth: cubic-bezier(0.4, 0, 0.2, 1);
     --transition-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
@@ -204,9 +206,17 @@ a {
     transform: scale(1.1) rotate(5deg);
 }
 
+/* Dégradé bleu-orange pour DOANYON */
+.brand-name {
+    background: linear-gradient(135deg, var(--blue) 0%, var(--orange) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
 .nav-links {
     display: flex;
-    gap: 2.5rem;
+    gap: 1.5rem;
     align-items: center;
 }
 
@@ -218,6 +228,10 @@ a {
     display: flex;
     align-items: center;
     gap: 0.4rem;
+    background: linear-gradient(135deg, var(--blue) 0%, var(--orange) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .nav-links a .nav-icon {
@@ -241,11 +255,12 @@ a {
 
 .nav-cta {
     padding: 0.65rem 1.8rem;
-    background: var(--black);
+    background: linear-gradient(135deg, var(--blue) 0%, var(--orange) 100%);
     color: var(--white);
     border-radius: 50px;
     font-size: 0.9rem;
     font-weight: 700;
+    transition: all 0.3s ease;
 }
 
 .nav-cta::after {
@@ -253,8 +268,9 @@ a {
 }
 
 .nav-cta:hover {
-    background: var(--accent);
-    color: var(--black);
+    background: linear-gradient(135deg, var(--orange) 0%, var(--blue) 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(91, 155, 213, 0.3);
 }
 
 .menu-btn {
@@ -267,10 +283,11 @@ a {
     padding: 0.5rem;
 }
 
+/* Dégradé bleu-orange pour les traits du menu */
 .menu-btn span {
     width: 28px;
     height: 2px;
-    background: var(--black);
+    background: linear-gradient(135deg, var(--blue) 0%, var(--orange) 100%);
     transition: all 0.3s;
 }
 
@@ -454,13 +471,15 @@ a {
 }
 
 .btn-primary {
-    background: var(--accent);
-    color: var(--black);
+    background: linear-gradient(135deg, var(--blue) 0%, var(--orange) 100%);
+    color: var(--white);
+    box-shadow: 0 5px 20px rgba(91, 155, 213, 0.2);
 }
 
 .btn-primary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 10px 30px rgba(255, 215, 0, 0.3);
+    box-shadow: 0 10px 40px rgba(91, 155, 213, 0.4);
+    background: linear-gradient(135deg, var(--orange) 0%, var(--blue) 100%);
 }
 
 .btn-secondary {
@@ -1727,14 +1746,12 @@ section {
 
 /* Touch device optimizations */
 @media (hover: none) and (pointer: coarse) {
-    /* Désactiver les effets hover sur mobile */
     .service-card:hover,
     .portfolio-item:hover,
     .contact-method:hover {
         transform: none;
     }
     
-    /* Améliorer les zones tactiles */
     .btn,
     .contact-method,
     .nav-link,
@@ -1745,18 +1762,15 @@ section {
         justify-content: center;
     }
     
-    /* Navigation tactile */
     .nav-cta {
         padding: 0.9rem 2rem;
     }
     
-    /* Supprimer les animations complexes sur mobile */
     * {
         animation-duration: 0.3s !important;
     }
 }
 
-/* Landscape mode sur mobile */
 @media (max-width: 896px) and (orientation: landscape) {
     .hero {
         min-height: 100vh;
@@ -1810,7 +1824,6 @@ section {
     }
 }
 
-/* Très petits écrans (< 375px) */
 @media (max-width: 374px) {
     .hero-title {
         font-size: 1.6rem;
